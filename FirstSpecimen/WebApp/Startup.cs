@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApp.Services;
 using WebApp.TagHelpers;
 
 namespace WebApp
@@ -37,6 +38,8 @@ namespace WebApp
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddTransient<ITagHelperComponent, AngularFilesTagHelperComponent>();
+
+            services.AddTransient<IUserService, HttpUserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
