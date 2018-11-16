@@ -40,6 +40,10 @@ namespace WebApp
             services.AddTransient<ITagHelperComponent, AngularFilesTagHelperComponent>();
 
             services.AddTransient<IUserService, HttpUserService>();
+
+            services.AddHttpClient(NamedHttpClients.JSONPlaceholder, client => {
+                client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,5 +70,10 @@ namespace WebApp
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+    }
+
+    public static class NamedHttpClients
+    {
+        public static string JSONPlaceholder = "jsonplaceholder";
     }
 }

@@ -1,11 +1,12 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Models;
 using WebApp.Services;
 
 namespace WebApp.Controllers
 {
-    [Route("Users")]
+    [Route("users")]
     public class UserController : Controller
     {
         private readonly IUserService _userService;
@@ -23,7 +24,19 @@ namespace WebApp.Controllers
         [Route("{userId:int}/{*page}")]
         public async Task<IActionResult> ViewUser(int userId)
         {
-            return View();
+            var user = await _userService.GetUser(userId);
+
+            var viewModel = new ViewUserViewModel
+            {
+                User = new UserModel
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    UserName = user.UserName,
+                    Email = user.Email
+                }
+            };
+            return View(viewModel);
         }
     }
 }
