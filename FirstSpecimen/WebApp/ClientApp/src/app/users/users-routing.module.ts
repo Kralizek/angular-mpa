@@ -43,8 +43,7 @@ const routes: Routes = [
 )
 export class UsersRoutingModule { }
 
-function ViewUserUrlMatcher (segments: UrlSegment[]) : UrlMatchResult {
-    console.log(segments);
+export function ViewUserUrlMatcher (segments: UrlSegment[]) : UrlMatchResult {
     return {
         consumed: segments.slice(0, 2),
         posParams: {
