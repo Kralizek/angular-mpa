@@ -1,3 +1,8 @@
-<p>
-  view-user-posts works!
-</p>
+<h3>Posts</h3>
+
+<ul>
+  <li *ngFor="let item of posts">
+    <div><h4><a href="/posts/{{ item.id }}">{{ item.title }}</a></h4></div>
+    <div>{{ item.body }}</div>
+  </li>
+</ul>
