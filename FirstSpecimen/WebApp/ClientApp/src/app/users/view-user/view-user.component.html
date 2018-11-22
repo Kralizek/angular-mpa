@@ -1,3 +1,16 @@
+<h2>{{ userSummary?.name }} ({{ userSummary?.id }})</h2>
+
+<dl>
+    <dt>Id</dt>
+    <dd>{{ userSummary?.id }}</dd>
+    <dt>Name</dt>
+    <dd>{{ userSummary?.name }}</dd>
+    <dt>Email</dt>
+    <dd>{{ userSummary?.email }}</dd>
+    <dt>Username</dt>
+    <dd>{{ userSummary?.username }}</dd>
+</dl>
+
 <ul>
     <li><a routerLink=".">Home</a></li>
     <li><a routerLink="posts">Posts</a></li>

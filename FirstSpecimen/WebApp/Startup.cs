@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApp.Filters;
 using WebApp.Services;
 using WebApp.TagHelpers;
 
@@ -35,7 +36,12 @@ namespace WebApp
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            var mvcBuilder = services.AddMvc(options =>
+            {
+                options.Filters.Add<PageDataActionFilter>();
+            });
+
+            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddTransient<ITagHelperComponent, AngularFilesTagHelperComponent>();
 

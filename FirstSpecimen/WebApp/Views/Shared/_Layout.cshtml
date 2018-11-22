@@ -77,7 +77,7 @@
     <angular-files />
 
     <script>
-        var viewModel = @Html.Json(Model);
+        var pageData = @Html.Json(ViewBag.PageData as object);
     </script>
 </body>
 </html>

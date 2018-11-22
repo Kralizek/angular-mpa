@@ -5,6 +5,7 @@ import { ViewUserComponent } from './view-user/view-user.component';
 import { ViewUserPostsComponent } from './view-user-posts/view-user-posts.component';
 import { ViewUserAlbumsComponent } from './view-user-albums/view-user-albums.component';
 import { ViewUserSummaryComponent } from './view-user-summary/view-user-summary.component';
+import { PageData } from '../page-data.service';
 
 const routes: Routes = [
     {
@@ -44,6 +45,10 @@ const routes: Routes = [
 export class UsersRoutingModule { }
 
 export function ViewUserUrlMatcher (segments: UrlSegment[]) : UrlMatchResult {
+
+    if (pageData.routeValues.controller !== 'User' || pageData.routeValues.action !== 'ViewUser')
+        return null;
+
     return {
         consumed: segments.slice(0, 2),
         posParams: {
@@ -51,3 +56,5 @@ export function ViewUserUrlMatcher (segments: UrlSegment[]) : UrlMatchResult {
         }
     };
 }
+
+declare var pageData : PageData;
