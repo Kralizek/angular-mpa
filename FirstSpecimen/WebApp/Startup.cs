@@ -41,7 +41,7 @@ namespace WebApp
                 options.Filters.Add<PageDataActionFilter>();
             });
 
-            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddTransient<ITagHelperComponent, AngularFilesTagHelperComponent>();
 
